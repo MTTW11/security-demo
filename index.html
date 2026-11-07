@@ -1,55 +1,90 @@
-<div class="container">
-        <!-- المرحلة الأولى: منصة قدم -->
-        <div class="login-box" id="loginBox">
-            <h2>مرحباً بكم في منصة قدم</h2>
-            <p>يرجى تسجيل الدخول للمتابعة وعرض التفاصيل</p>
-            <div class="input-group">
-                <label>اسم المستخدم</label>
-                <input type="text" id="username" placeholder="أدخل اسم المستخدم...">
-            </div>
-            <div class="input-group">
-                <label>كلمة المرور / الرمز</label>
-                <input type="password" id="password" placeholder="أدخل الرمز السرّي...">
-            </div>
-            <button class="btn" onclick="startHack()">تسجيل الدخول</button>
-        </div>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            width: 300px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #444;
+            background-color: #222;
+            color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #cc0000;
+        }
+        h2 { margin-bottom: 20px; color: #ff4444; }
+        
+        /* شاشة الاختراق الصادمة */
+        #hacked-screen {
+            display: none;
+            text-align: center;
+        }
+        #hacked-screen h1 {
+            color: #ff4444;
+            font-size: 2.5em;
+        }
+        #hacked-screen p {
+            color: #aaa;
+            font-size: 1.1em;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
 
-        <!-- المرحلة الثانية: الاختراق -->
-        <div class="hacker-screen" id="hackerScreen">
-            <div class="header-top">
-                <span>ROOT_ACCESS</span>
-                <span>BREACH ● DETECTED</span>
-                <span>SEC_TERMINAL</span>
-            </div>
+    <!-- الواجهة الأولى: تسجيل الدخول الوهمية -->
+    <div class="card" id="login-card">
+        <h2>تسجيل الدخول</h2>
+        <form onsubmit="showHacked(event)">
+            <input type="text" placeholder="اسم المستخدم" required>
+            <input type="password" placeholder="كلمة المرور" required>
+            <button type="submit">دخول</button>
+        </form>
+    </div>
 
-            <div class="skull-icon">💀</div>
-            
-            <div class="alert-title">تم اختراق جهازك وسحب بياناتك!</div>
-            <div class="alert-sub">ALL DATA HAS BEEN STOLEN</div>
-
-            <div class="terminal-box">
-                <div>> ACCESSING DATABASE... [OK]</div>
-                <div>> BYPASSING FIREWALL... [SUCCESS]</div>
-                <div>> STEALING PASSWORDS & CONTACTS... [COMPLETE]</div>
-                <div>> UPLOADING SYSTEM CONTROL... [100%]</div>
-                <div>> STATUS: DEVICE FULLY COMPROMISED!</div>
-            </div>
-
-            <div class="status-badge">WARNING: SECURITY BREACH</div>
-
-            <button class="btn btn-danger" onclick="resetApp()">إعادة ضبط النظام</button>
-        </div>
+    <!-- الواجهة الثانية: نتيجة الاختراق المباشرة -->
+    <div id="hacked-screen">
+        <h1>⚠️ تم اختراق جهازك بنجاح!</h1>
+        <p>تم سحب جميع البيانات والملفات الشخصية بنجاح.</p>
     </div>
 
     <script>
-        function startHack() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-
-            if(user.trim() === "" || pass.trim() === "") {
-                alert("يرجى ملء الحقول أولاً!");
-                return;
-            }
-
-            document.getElementById('loginBox').style.display = 'none';
-            document.getElementById('hacker
+        function showHacked(event) {
+            event.preventDefault(); 
+            document.getElementById('login-card').style.display = 'none'; 
+            document.getElementById('hacked-screen').style
