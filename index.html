@@ -1,83 +1,150 @@
-border: 1px solid #ff0033;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 10px;
-            margin-bottom: 10px;
-            background: rgba(255,0,51,0.08);
-            color: #ff0033;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة قدم - نظام آمن</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma, sans-serif;
         }
-        .btn-danger {
-            background: #ff0033;
+        body {
+            background-color: #111111;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            margin: 0;
+            overflow: hidden;
+        }
+        .card {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.8);
+            width: 340px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #444;
+            background-color: #222;
             color: #fff;
+            border-radius: 6px;
+            box-sizing: border-box;
+            outline: none;
+            font-size: 14px;
+        }
+        input:focus {
+            border-color: #ff4444;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #cc0000;
+        }
+        h2 { 
+            margin-bottom: 8px; 
+            color: #ff4444; 
+            font-size: 20px;
+        }
+        .sub-text {
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        /* شاشة الاختراق (مخفية بالبداية) */
+        #hacked-screen {
+            display: none;
+            text-align: center;
+            background-color: #1a1a1a;
+            padding: 35px;
+            border-radius: 10px;
+            border: 2px solid #ff4444;
+            box-shadow: 0 4px 25px rgba(255,68,68,0.3);
+            width: 380px;
+        }
+        #hacked-screen h1 {
+            color: #ff4444;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .terminal-box {
+            background: #111;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: right;
+            font-size: 11px;
+            margin: 15px 0;
+            line-height: 1.8;
+            color: #ff8888;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .skull {
+            font-size: 40px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- المرحلة الأولى: منصة قدم -->
-        <div class="login-box" id="loginBox">
-            <h2>مرحباً بكم في منصة قدم</h2>
-            <p>يرجى تسجيل الدخول للمتابعة وعرض التفاصيل</p>
-            <div class="input-group">
-                <label>اسم المستخدم</label>
-                <input type="text" id="username" placeholder="أدخل اسم المستخدم...">
-            </div>
-            <div class="input-group">
-                <label>كلمة المرور / الرمز</label>
-                <input type="password" id="password" placeholder="أدخل الرمز السرّي...">
-            </div>
-            <button class="btn" onclick="startHack()">تسجيل الدخول</button>
-        </div>
-
-        <!-- المرحلة الثانية: الاختراق -->
-        <div class="hacker-screen" id="hackerScreen">
-            <div class="header-top">
-                <span>ROOT_ACCESS</span>
-                <span style="color:#ff0033;">BREACH ● DETECTED</span>
-                <span>SEC_TERMINAL</span>
-            </div>
-
-            <div class="hacker-img-container">
-                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=200&auto=format&fit=crop&q=80" alt="Hacker">
-            </div>
-            
-            <div class="alert-title">تم اختراق جهازك وسحب بياناتك!</div>
-            <div class="alert-sub">ALL DATA HAS BEEN STOLEN</div>
-
-            <div class="terminal-box">
-                <div>> ACCESSING DATABASE... [OK]</div>
-                <div>> BYPASSING FIREWALL... [SUCCESS]</div>
-                <div>> STEALING PASSWORDS & CONTACTS... [COMPLETE]</div>
-                <div>> UPLOADING SYSTEM CONTROL... [100%]</div>
-                <div>> STATUS: DEVICE FULLY COMPROMISED!</div>
-            </div>
-
-            <div class="status-badge">WARNING: SECURITY BREACH</div>
-
-            <button class="btn btn-danger" onclick="resetApp()">إعادة ضبط النظام</button>
-        </div>
+    <!-- الواجهة الأولى: تسجيل الدخول (منصة قدم) -->
+    <div class="card" id="login-card">
+        <h2>مرحباً بكم في منصة قدم</h2>
+        <p class="sub-text">يرجى تسجيل الدخول للمتابعة وعرض التفاصيل</p>
+        <form onsubmit="showHacked(event)">
+            <input type="text" placeholder="اسم المستخدم" required>
+            <input type="password" placeholder="كلمة المرور / الرمز" required>
+            <button type="submit">تسجيل الدخول</button>
+        </form>
     </div>
 
+    <!-- الواجهة الثانية: الاختراق وسحب البيانات -->
+    <div id="hacked-screen">
+        <div class="skull">💀</div>
+        <h1>تم اختراق جهازك وسحب بياناتك!</h1>
+        <p style="color: #ccc; font-size: 0.9em; margin-bottom: 10px;">ALL DATA HAS BEEN STOLEN</p>
+        
+        <div class="terminal-box">
+            <div>> ACCESSING DATABASE... [OK]</div>
+            <div>> BYPASSING FIREWALL... [SUCCESS]</div>
+            <div>> STEALING PASSWORDS & CONTACTS... [COMPLETE]</div>
+            <div>> UPLOADING SYSTEM CONTROL... [100%]</div>
+        </div>
+
+        <button type="button" onclick="resetApp()">إعادة ضبط النظام</button>
+    </div> 
     <script>
-        function startHack() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-
-            if(user.trim() === "" || pass.trim() === "") {
-                alert("يرجى ملء الحقول أولاً!");
-                return;
-            }
-
-            document.getElementById('loginBox').style.display = 'none';
-            document.getElementById('hackerScreen').style.display = 'block';
+        function showHacked(event) {
+            event.preventDefault(); 
+            document.getElementById('login-card').style.display = 'none'; 
+            document.getElementById('hacked-screen').style.display = 'block'; 
         }
 
         function resetApp() {
-            document.getElementById('username').value = "";
-            document.getElementById('password').value = "";
-            document.getElementById('hackerScreen').style.display = 'none';
-            document.getElementById('loginBox').style.display = 'block';
+            document.getElementById('hacked-screen').style.display = 'none';
+            document.getElementById('login-card').style.display = 'block';
         }
     </script>
 
