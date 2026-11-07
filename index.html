@@ -1,72 +1,114 @@
-.alert-sub {
+/* صورة الهكر */
+        .hacker-img-container {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 12px auto;
+            border-radius: 50%;
+            border: 2px solid #ff0033;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 0, 51, 0.6);
+            background: #111;
+        }
+
+        .hacker-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .alert-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ff0033;
+            text-shadow: 0 0 10px rgba(255, 0, 51, 0.5);
+        }
+
+        .alert-sub {
             font-size: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             letter-spacing: 1px;
+            color: #ff4d4d;
         }
 
         .terminal-box {
-            background: #020503;
-            border: 1px solid #00ff66;
-            border-radius: 6px;
-            padding: 10px;
+            background: #080203;
+            border: 1px solid #ff0033;
+            border-radius: 8px;
+            padding: 12px;
             text-align: right;
             font-size: 11px;
-            margin-bottom: 12px;
-            line-height: 1.6;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #ff6666;
         }
 
         .status-badge {
             display: inline-block;
-            border: 1px solid #00ff66;
-            padding: 4px 12px;
+            border: 1px solid #ff0033;
+            padding: 5px 15px;
             border-radius: 20px;
-            font-size: 10px;
-            margin-bottom: 12px;
-            background: rgba(0,255,102,0.05);
+            font-size: 11px;
+            margin-bottom: 15px;
+            background: rgba(255,0,51,0.08);
+            color: #ff0033;
+        }
+
+        .btn-danger {
+            background: #ff0033;
+            color: #fff;
+        }
+        .btn-danger:hover {
+            background: #cc0029;
+            box-shadow: 0 0 15px #ff0033;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- واجهة تسجيل الدخول -->
+        <!-- المرحلة الأولى: تسجيل الدخول (منصة قدم) -->
         <div class="login-box" id="loginBox">
-            <h2>تسجيل الدخول للنظام</h2>
+            <h2>مرحباً بكم في منصة قدم</h2>
+            <p>يرجى تسجيل الدخول للمتابعة وعرض التفاصيل</p>
             <div class="input-group">
                 <label>اسم المستخدم</label>
                 <input type="text" id="username" placeholder="أدخل اسم المستخدم...">
             </div>
             <div class="input-group">
-                <label>كلمة المرور</label>
-                <input type="password" id="password" placeholder="أدخل الرمز...">
+                <label>كلمة المرور / الرمز</label>
+                <input type="password" id="password" placeholder="أدخل الرمز السرّي...">
             </div>
-            <button class="btn" onclick="startHack()">دخول</button>
+            <button class="btn" onclick="startHack()">تسجيل الدخول</button>
         </div>
 
-        <!-- واجهة الاختراق -->
+        <!-- المرحلة الثانية: واجهة الاختراق -->
         <div class="hacker-screen" id="hackerScreen">
             <div class="header-top">
-                <span>W582E</span>
-                <span class="system-online">SYSTEM ● ONLINE</span>
-                <span>CYBER TERMINAL</span>
+                <span>ROOT_ACCESS</span>
+                <span class="system-danger">BREACH ● DETECTED</span>
+                <span>SEC_TERMINAL</span>
             </div>
 
-            <div class="skull">☠️</div>
+            <!-- صورة الهكر المرتبة -->
+            <div class="hacker-img-container">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=200&auto=format&fit=crop&q=80" alt="Hacker">
+            </div>
             
-            <div class="alert-title">تم تهكير جهازك بنجاح!</div>
-            <div class="alert-sub">SYSTEM COMPROMISED</div>
+            <div class="alert-title">تم اختراق جهازك وسحب بياناتك!</div>
+            <div class="alert-sub">ALL DATA HAS BEEN STOLEN</div>
 
             <div class="terminal-box">
-                <div>> ACCESS GRANTED</div>
-                <div>> FIREWALL BYPASSED</div>
-                <div>> ENCRYPTION OVERRIDDEN</div>
-                <div>> SYSTEM CONTROL: 100%</div>
-                <div>> MISSION COMPLETED</div>
+                <div>> ACCESSING DATABASE... [OK]</div>
+                <div>> BYPASSING FIREWALL... [SUCCESS]</div>
+                <div>> STEALING PASSWORDS & CONTACTS... [COMPLETE]</div>
+                <div>> UPLOADING SYSTEM CONTROL TO REMOTE SERVER... [100%]</div>
+                <div>> STATUS: DEVICE FULLY COMPROMISED!</div>
             </div>
 
-            <div class="status-badge">HACK SIMULATION COMPLETE</div>
+            <div class="status-badge">WARNING: SECURITY BREACH</div>
 
-            <button class="btn" onclick="resetApp()">إعادة التجربة</button>
+            <button class="btn btn-danger" onclick="resetApp()">إعادة ضبط النظام</button>
         </div>
     </div>
 
@@ -76,21 +118,6 @@
             const pass = document.getElementById('password').value;
 
             if(user.trim() === "" || pass.trim() === "") {
-                alert("يرجى ملء الحقول أولاً!");
+                alert("يرجى ملء الحقول أولاً يا بطل!");
                 return;
             }
-
-            document.getElementById('loginBox').style.display = 'none';
-            document.getElementById('hackerScreen').style.display = 'block';
-        }
-
-        function resetApp() {
-            document.getElementById('username').value = "";
-            document.getElementById('password').value = "";
-            document.getElementById('hackerScreen').style.display = 'none';
-            document.getElementById('loginBox').style.display = 'block';
-        }
-    </script>
-
-</body>
-</html>
