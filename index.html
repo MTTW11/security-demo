@@ -49,7 +49,7 @@
         }
         h2 { margin-bottom: 20px; color: #ff4444; }
         
-        /* شاشة الاختراق الصادمة */
+        /* شاشة الاختراق */
         #hacked-screen {
             display: none;
             text-align: center;
@@ -67,7 +67,7 @@
 </head>
 <body>
 
-    <!-- الواجهة الأولى: تسجيل الدخول الوهمية -->
+    <!-- واجهة تسجيل الدخول -->
     <div class="card" id="login-card">
         <h2>تسجيل الدخول</h2>
         <form onsubmit="showHacked(event)">
@@ -77,14 +77,19 @@
         </form>
     </div>
 
-    <!-- الواجهة الثانية: نتيجة الاختراق المباشرة -->
+    <!-- شاشة الاختراق المباشرة -->
     <div id="hacked-screen">
-        <h1>⚠️ تم اختراق جهازك بنجاح!</h1>
+        <h1> تم اختراق جهازك بنجاح!</h1>
         <p>تم سحب جميع البيانات والملفات الشخصية بنجاح.</p>
     </div>
 
     <script>
         function showHacked(event) {
-            event.preventDefault(); 
-            document.getElementById('login-card').style.display = 'none'; 
-            document.getElementById('hacked-screen').style
+            event.preventDefault(); // يمنع إعادة تحميل الصفحة
+            document.getElementById('login-card').style.display = 'none'; // يخفي خانة الدخول
+            document.getElementById('hacked-screen').style.display = 'block'; // يظهر شاشة الاختراق فوراً
+        }
+    </script>
+
+</body>
+</html>
