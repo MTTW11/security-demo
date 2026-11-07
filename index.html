@@ -1,52 +1,12 @@
-.hacker-img {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 20px auto;
-            border-radius: 50%;
-            border: 3px solid #ff4444;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
-            background: #111;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hacker-img svg {
-            width: 50px;
-            height: 50px;
-            fill: #ff4444;
-        }
-
-        #hacked-screen h1 {
-            color: #ff4444;
-            font-size: 2em;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        #hacked-screen p {
+#hacked-screen p {
             color: #d1c4e9;
             font-size: 1.05em;
             line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        .warning-tag {
-            display: inline-block;
-            background: rgba(255, 68, 68, 0.15);
-            color: #ff6b6b;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            margin-top: 15px;
-            border: 1px solid rgba(255, 68, 68, 0.3);
         }
     </style>
 </head>
 <body>
 
-    <!-- واجهة تسجيل الدخول -->
     <div class="login-container" id="login-card">
         <div class="avatar-circle">
             <svg viewBox="0 0 24 24">
@@ -72,27 +32,22 @@
             </div>
 
             <div class="options">
-                <label>
-                    <input type="checkbox" checked> تذكرني
-                </label>
-                <a href="#">نسيت كلمة المرور؟</a>
+                <label><input type="checkbox" checked> تذكرني</label>
+                <a href="#" style="color: #d1c4e9; text-decoration: none;">نسيت كلمة المرور؟</a>
             </div>
 
             <button type="submit" class="login-btn">تسجيل الدخول</button>
         </form>
     </div>
 
-    <!-- شاشة الاختراق المرتبة -->
     <div id="hacked-screen">
         <div class="hacker-img">
-            <!-- أيقونة هكر / قناع تعبيري فخم -->
             <svg viewBox="0 0 24 24">
                 <path d="M12 1a3 3 0 0 0-3 3v1H6a2 2 0 0 0-2 2v2c0 1.66 1.34 3 3 3 .34 0 .67-.05 1-.15V13c0 2.21 1.79 4 4 4s4-1.79 4-4v-2.15c.33.1.66.15 1 .15 1.66 0 3-1.34 3-3V7a2 2 0 0 0-2-2h-3V4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v1h-2V4a1 1 0 0 1 1-1m-5 5h2v3H7V8m10 0v3h-2V8h2m-5 6a2 2 0 0 1-2-2h4a2 2 0 0 1-2 2z"/>
             </svg>
         </div>
-        <h1> تم اختراق جهازك بنجاح!</h1>
+        <h1>⚠️ تم اختراق جهازك بنجاح!</h1>
         <p>تم سحب جميع بيانات الاعتماد، والملفات الشخصية، والسيطرة الكاملة على النظام.</p>
-        <div class="warning-tag">Security Breach Detected</div>
     </div>
 
     <script>
