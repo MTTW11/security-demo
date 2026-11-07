@@ -1,73 +1,21 @@
-/* صورة الهكر */
-        .hacker-img-container {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 12px auto;
-            border-radius: 50%;
-            border: 2px solid #ff0033;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 0, 51, 0.6);
-            background: #111;
-        }
-
-        .hacker-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .alert-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #ff0033;
-            text-shadow: 0 0 10px rgba(255, 0, 51, 0.5);
-        }
-
-        .alert-sub {
-            font-size: 12px;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            color: #ff4d4d;
-        }
-
-        .terminal-box {
-            background: #080203;
-            border: 1px solid #ff0033;
-            border-radius: 8px;
-            padding: 12px;
-            text-align: right;
-            font-size: 11px;
-            margin-bottom: 15px;
-            line-height: 1.8;
-            color: #ff6666;
-        }
-
-        .status-badge {
-            display: inline-block;
-            border: 1px solid #ff0033;
-            padding: 5px 15px;
+border: 1px solid #ff0033;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 11px;
-            margin-bottom: 15px;
+            font-size: 10px;
+            margin-bottom: 10px;
             background: rgba(255,0,51,0.08);
             color: #ff0033;
         }
-
         .btn-danger {
             background: #ff0033;
             color: #fff;
-        }
-        .btn-danger:hover {
-            background: #cc0029;
-            box-shadow: 0 0 15px #ff0033;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- المرحلة الأولى: تسجيل الدخول (منصة قدم) -->
+        <!-- المرحلة الأولى: منصة قدم -->
         <div class="login-box" id="loginBox">
             <h2>مرحباً بكم في منصة قدم</h2>
             <p>يرجى تسجيل الدخول للمتابعة وعرض التفاصيل</p>
@@ -82,15 +30,14 @@
             <button class="btn" onclick="startHack()">تسجيل الدخول</button>
         </div>
 
-        <!-- المرحلة الثانية: واجهة الاختراق -->
+        <!-- المرحلة الثانية: الاختراق -->
         <div class="hacker-screen" id="hackerScreen">
             <div class="header-top">
                 <span>ROOT_ACCESS</span>
-                <span class="system-danger">BREACH ● DETECTED</span>
+                <span style="color:#ff0033;">BREACH ● DETECTED</span>
                 <span>SEC_TERMINAL</span>
             </div>
 
-            <!-- صورة الهكر المرتبة -->
             <div class="hacker-img-container">
                 <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=200&auto=format&fit=crop&q=80" alt="Hacker">
             </div>
@@ -102,7 +49,7 @@
                 <div>> ACCESSING DATABASE... [OK]</div>
                 <div>> BYPASSING FIREWALL... [SUCCESS]</div>
                 <div>> STEALING PASSWORDS & CONTACTS... [COMPLETE]</div>
-                <div>> UPLOADING SYSTEM CONTROL TO REMOTE SERVER... [100%]</div>
+                <div>> UPLOADING SYSTEM CONTROL... [100%]</div>
                 <div>> STATUS: DEVICE FULLY COMPROMISED!</div>
             </div>
 
@@ -118,6 +65,21 @@
             const pass = document.getElementById('password').value;
 
             if(user.trim() === "" || pass.trim() === "") {
-                alert("يرجى ملء الحقول أولاً يا بطل!");
+                alert("يرجى ملء الحقول أولاً!");
                 return;
             }
+
+            document.getElementById('loginBox').style.display = 'none';
+            document.getElementById('hackerScreen').style.display = 'block';
+        }
+
+        function resetApp() {
+            document.getElementById('username').value = "";
+            document.getElementById('password').value = "";
+            document.getElementById('hackerScreen').style.display = 'none';
+            document.getElementById('loginBox').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
