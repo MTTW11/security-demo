@@ -1,60 +1,95 @@
-#hacked-screen p {
-            color: #d1c4e9;
-            font-size: 1.05em;
-            line-height: 1.6;
+.alert-sub {
+            font-size: 13px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .terminal-box {
+            background: #020503;
+            border: 1px solid #00ff66;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: right;
+            font-size: 12px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .status-badge {
+            display: inline-block;
+            border: 1px solid #00ff66;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 11px;
+            margin-bottom: 15px;
+            background: rgba(0,255,102,0.05);
         }
     </style>
 </head>
 <body>
 
-    <div class="login-container" id="login-card">
-        <div class="avatar-circle">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-            </svg>
+    <div class="container">
+        <!-- واجهة تسجيل الدخول -->
+        <div class="login-box" id="loginBox">
+            <h2>تسجيل الدخول للنظام</h2>
+            <div class="input-group">
+                <label>اسم المستخدم</label>
+                <input type="text" id="username" placeholder="أدخل اسم المستخدم...">
+            </div>
+            <div class="input-group">
+                <label>كلمة المرور</label>
+                <input type="password" id="password" placeholder="أدخل الرمز...">
+            </div>
+            <button class="btn" onclick="startHack()">دخول</button>
         </div>
 
-        <div class="welcome-title">مرحباً بكم في منصة قدم</div>
-
-        <form onsubmit="showHacked(event)">
-            <div class="input-group">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-                <input type="text" placeholder="اسم المستخدم" required>
+        <!-- واجهة الاختراق (مطابقة للصورة) -->
+        <div class="hacker-screen" id="hackerScreen">
+            <div class="header-top">
+                <span>W582E</span>
+                <span class="system-online">SYSTEM ● ONLINE</span>
+                <span>CYBER TERMINAL</span>
             </div>
 
-            <div class="input-group">
-                <svg class="icon" viewBox="0 0 24 24">
-                    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
-                </svg>
-                <input type="password" placeholder="كلمة المرور" required>
+            <div class="skull">☠️</div>
+            
+            <div class="alert-title">تم تهكير جهازك بنجاح!</div>
+            <div class="alert-sub">SYSTEM COMPROMISED</div>
+
+            <div class="terminal-box">
+                <div>> ACCESS GRANTED</div>
+                <div>> FIREWALL BYPASSED</div>
+                <div>> ENCRYPTION OVERRIDDEN</div>
+                <div>> SYSTEM CONTROL: 100%</div>
+                <div>> MISSION COMPLETED</div>
             </div>
 
-            <div class="options">
-                <label><input type="checkbox" checked> تذكرني</label>
-                <a href="#" style="color: #d1c4e9; text-decoration: none;">نسيت كلمة المرور؟</a>
-            </div>
+            <div class="status-badge">HACK SIMULATION COMPLETE</div>
 
-            <button type="submit" class="login-btn">تسجيل الدخول</button>
-        </form>
-    </div>
-
-    <div id="hacked-screen">
-        <div class="hacker-img">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 1a3 3 0 0 0-3 3v1H6a2 2 0 0 0-2 2v2c0 1.66 1.34 3 3 3 .34 0 .67-.05 1-.15V13c0 2.21 1.79 4 4 4s4-1.79 4-4v-2.15c.33.1.66.15 1 .15 1.66 0 3-1.34 3-3V7a2 2 0 0 0-2-2h-3V4a3 3 0 0 0-3-3m0 2a1 1 0 0 1 1 1v1h-2V4a1 1 0 0 1 1-1m-5 5h2v3H7V8m10 0v3h-2V8h2m-5 6a2 2 0 0 1-2-2h4a2 2 0 0 1-2 2z"/>
-            </svg>
+            <button class="btn" onclick="resetApp()">إعادة التجربة</button>
         </div>
-        <h1>⚠️ تم اختراق جهازك بنجاح!</h1>
-        <p>تم سحب جميع بيانات الاعتماد، والملفات الشخصية، والسيطرة الكاملة على النظام.</p>
     </div>
 
     <script>
-        function showHacked(event) {
-            event.preventDefault();
-            document.getElementById('login-card').style.display = 'none';
-            document.getElementById('hacked-screen').style.display = 'block';
+        function startHack() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if(user.trim() === "" || pass.trim() === "") {
+                alert("يرجى ملء الحقول أولاً!");
+                return;
+            }
+
+            // إخفاء تسجيل الدخول وإظهار شاشة الهكر
+            document.getElementById('loginBox').style.display = 'none';
+            document.getElementById('hackerScreen').style.display = 'block';
+        }
+
+        function resetApp() {
+            document.getElementById('username').value = "";
+            document.getElementById('password').value = "";
+            document.getElementById('hackerScreen').style.display = 'none';
+            document.getElementById('loginBox').style.display = 'block';
         }
     </script>
 
