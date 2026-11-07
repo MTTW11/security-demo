@@ -1,97 +1,103 @@
-.alert-sub {
-            font-size: 13px;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محاكاة نظام الاختراق</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
         }
 
-        .terminal-box {
-            background: #020503;
-            border: 1px solid #00ff66;
-            border-radius: 8px;
-            padding: 12px;
+        body {
+            background-color: #0b0f0c;
+            color: #00ff66;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        body::after {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 99999;
+            background-size: 100% 4px, 6px 100%;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .login-box {
+            background: rgba(0, 20, 10, 0.95);
+            border: 2px solid #00ff66;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+            color: #00ff66;
+            text-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
             text-align: right;
-            font-size: 12px;
-            margin-bottom: 15px;
-            line-height: 1.8;
         }
 
-        .status-badge {
-            display: inline-block;
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            background: #050a07;
             border: 1px solid #00ff66;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 11px;
-            margin-bottom: 15px;
-            background: rgba(0,255,102,0.05);
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <!-- واجهة تسجيل الدخول -->
-        <div class="login-box" id="loginBox">
-            <h2>تسجيل الدخول للنظام</h2>
-            <div class="input-group">
-                <label>اسم المستخدم</label>
-                <input type="text" id="username" placeholder="أدخل اسم المستخدم...">
-            </div>
-            <div class="input-group">
-                <label>كلمة المرور</label>
-                <input type="password" id="password" placeholder="أدخل الرمز...">
-            </div>
-            <button class="btn" onclick="startHack()">دخول</button>
-        </div>
-
-        <!-- واجهة الاختراق (مطابقة للصورة) -->
-        <div class="hacker-screen" id="hackerScreen">
-            <div class="header-top">
-                <span>W582E</span>
-                <span class="system-online">SYSTEM ● ONLINE</span>
-                <span>CYBER TERMINAL</span>
-            </div>
-
-            <div class="skull">☠️</div>
-            
-            <div class="alert-title">تم تهكير جهازك بنجاح!</div>
-            <div class="alert-sub">SYSTEM COMPROMISED</div>
-
-            <div class="terminal-box">
-                <div>> ACCESS GRANTED</div>
-                <div>> FIREWALL BYPASSED</div>
-                <div>> ENCRYPTION OVERRIDDEN</div>
-                <div>> SYSTEM CONTROL: 100%</div>
-                <div>> MISSION COMPLETED</div>
-            </div>
-
-            <div class="status-badge">HACK SIMULATION COMPLETE</div>
-
-            <button class="btn" onclick="resetApp()">إعادة التجربة</button>
-        </div>
-    </div>
-
-    <script>
-        function startHack() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-
-            if(user.trim() === "" || pass.trim() === "") {
-                alert("يرجى ملء الحقول أولاً!");
-                return;
-            }
-
-            // إخفاء تسجيل الدخول وإظهار شاشة الهكر
-            document.getElementById('loginBox').style.display = 'none';
-            document.getElementById('hackerScreen').style.display = 'block';
+            color: #00ff66;
+            border-radius: 6px;
+            outline: none;
+            font-size: 16px;
         }
 
-        function resetApp() {
-            document.getElementById('username').value = "";
-            document.getElementById('password').value = "";
-            document.getElementById('hackerScreen').style.display = 'none';
-            document.getElementById('loginBox').style.display = 'block';
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #00ff66;
+            color: #050a07;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
         }
-    </script>
 
-</body>
-</html>
+        .btn:hover {
+            background: #00cc52;
+            box-shadow: 0 0 15px #00ff66;
+        }
+
+        .hacker-screen {
+            display: none;
+            width: 10
